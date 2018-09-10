@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+.my-btn{
+    width: 100px;
+    height: 50px;
+    border-radius: 4px;
+    background: #409eff;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+.my-btn:active{
+    background: #3a8ee6
+}
+</style>
+<body>
+    <div id="app">
+        <my-btn text="我的按钮"></my-btn>
+        <my-btn text="你的按钮"></my-btn>
+        <my-btn v-bind:num="btnText"></my-btn>
+        <!-- 在组件中监听事件 要加native -->
+        <my-btn text="切换" v-on:click.native = "handleClick"></my-btn>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+    // 在子组件内部声明一个props
+    const myBtn = {
+        props:{
+            text:{
+                // 定义类型  
+                type: String
+            },
+            num:{
+                type:Number
+            }
+        },
+        template:`
+            <button class="my-btn">{{text}} {{num}}</button>
+        `
+    }
+    Vue.component('my-btn',myBtn)
+    const app = new Vue({
+        el:'#app',
+        data:{
+            btnText:0
+        },
+        methods:{
+            handleClick(){
+                // alert(1);
+                this.btnText++
+            }
+        }
+    })
+</script>
+</html>

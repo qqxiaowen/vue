@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{shuju}}
+        <div v-text="shuju"></div>
+        <div v-html="shuju"></div>
+    </div>   
+</body>
+<script src="./vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            shuju:`<h3>这是h3标签</h3>`
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用v-model快速的取到表单元素 -->
+       <label for="">用户名：</label> <input type="text" v-model="usrname">
+       <label for="">密码：</label><input type="text" v-model="psd">
+       <button v-on:click=danchu>点击提交</button>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+    const app =new Vue({
+        el:"#app",
+        data:{
+            usrname:"",
+            psd:""
+        },
+        methods:{
+            danchu(){
+                alert("用户名："+this.usrname + " 密码："+this.psd);
+            }
+        }
+    })
+</script>
+</html>

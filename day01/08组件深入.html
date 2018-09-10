@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <my-zujian></my-zujian>
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+    // 在声明的组件中也可以使用data，methods等 但是要加return
+    const  myZujian ={
+        template:`
+        <h3 style="color:#00f">{{text}}</h3>
+        `,
+        data(){
+            return{
+                text:'组件的文字'
+            }
+        }
+    }
+
+    const app = new Vue({
+        el:'#app',
+        data:{},
+        methods:{},
+        components:{
+            myZujian
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <label for="">姓名1<input v-model="firstName" type="text" name="" id=""></label><br>
+        <label for="">姓名2<input v-model="lastName" type="text"  name="" id=""></label>
+        <!-- <h3>{{firstName + lastName}}</h3> -->
+        <h3>{{fullName}}</h3>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            firstName:'',
+            lastName:'',
+            // fullName:''
+        },
+        // 使用computed去计算属性
+        computed:{
+            fullName(){
+                return this.firstName + this.lastName
+            }
+        }  
+    })
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <label for="">姓名1<input v-model="firstName" type="text" name="" id=""></label><br>
+        <label for="">姓名2<input v-model="lastName" type="text"  name="" id=""></label>
+        <!-- <h3>{{firstName + lastName}}</h3> -->
+        <h3>{{fullName}}</h3>
+    </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            firstName:'',
+            lastName:'',
+            fullName:''
+        },
+        // 使用watch监听属性
+        watch: {
+            firstName(newv,old){
+                this.fullName = newv + this.lastName                
+            },
+            lastName(newv,old){
+                this.fullName = this.firstName + newv
+            }
+        }
+        // 但是watch监听一般不这样写，遇到这种情况使用计算属性
+    })
+</script>
+</html>

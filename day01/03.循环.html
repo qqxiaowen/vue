@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .done{
+        text-decoration: line-through;
+    }
+</style>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 使用v-bind绑定标签中的属性-class -->
+            <li
+            v-bind:class="{done:item.isdone}"
+            v-on:click = togoleTodo(index)
+            v-for="(item,index) in arr">
+                {{index}}{{item.todo}}
+            </li>
+        </ul>
+        
+
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+   const app = new Vue({
+       el:"#app",
+       data:{
+           arr:[
+                {
+                    todo:"吃饭",
+                    isdone:true
+                },
+                {
+                    todo:"睡觉",
+                    isdone:false
+                },
+                {
+                    todo:"玩游戏",
+                    isdone:false
+                }
+           ], 
+       },
+       methods:{
+            togoleTodo(index){
+                this.arr[index].isdone = !this.arr[index].isdone
+            }
+       }
+   })
+</script>
+</html>

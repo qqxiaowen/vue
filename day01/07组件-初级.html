@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+.my-btn{
+    width: 100px;
+    height: 50px;
+    border-radius: 4px;
+    background: #409eff;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+.my-btn:active{
+    background: #3a8ee6
+}
+.my-btn i{
+    display: inline-block;
+    border: 6px solid transparent;
+    border-top: 6px solid #000;
+    border-bottom: none;
+}
+</style>
+<body>
+    <div id="app">
+        <button class="my-btn">按钮</button>
+        <my-btn>xx</my-btn>
+        <my-btn>xx</my-btn>
+        <my-btn>xx</my-btn>
+        <my-btn>xx</my-btn>
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+    
+
+    // 声明一个组件
+    const myBtn = {
+        template:`
+        <button class="my-btn">
+            <i></i><slot></slot>
+        </button>
+        `
+    }
+    // 在全局中注册组件
+    Vue.component("my-btn",myBtn)
+
+    const app = new Vue({
+        el:"#app",
+       
+    })
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+        .my-btn{
+            width: 100px;
+            height: 50px;
+            border-radius: 4px;
+            background: #409eff;
+            color: #fff;
+            line-height: 50px;
+            text-align: center;
+            border: none;
+            outline: none;
+        }
+        .my-btn:active{
+            background: #3a8ee6
+        }
+        </style>
+<body>
+    <div id="app">
+        <my-btn text="按钮"></my-btn>
+        <my-btn text="我的按钮" @toyou ="getchild"></my-btn>
+
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+     const myBtn = {
+        props:{
+            text:{
+                // 定义类型  
+                type: String
+            }
+        },
+        template:`
+            <button class="my-btn" @click="toFather">{{text}}</button>
+        `,
+        data(){
+            return {
+                child:"子组件内部的值"
+            }
+        },
+        methods: {
+            toFather(){
+                // 自定义事件
+                this.$emit('toyou',this.child)
+            }
+        }
+    }
+    Vue.component('my-btn',myBtn)
+    const app = new Vue({
+        el:'#app',
+        methods:{
+            getchild(child){
+                console.log(child)
+            }
+        }
+    })
+</script>
+</html>

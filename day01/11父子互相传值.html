@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" value="555">
+
+        <h2>父组件的值：{{num1}}</h2>
+        <button @click=fathernum>+++++</button>
+        <mydiv v-bind:my-num="num1"
+         @add-parent="parentadd"
+         @rdu-parent="parentrdu"></mydiv>
+        <mydiv></mydiv>
+        <mydiv></mydiv>
+        <mydiv></mydiv>
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+    const mydiv = {
+        template:`
+            <div>
+                <button @click=Add>+</button>
+                <strong>{{num}}</strong>
+                <button @click=Red>-</button>
+            </div>
+        `,
+        props:{
+            "my-num":Number
+        },
+        data(){
+            return {
+                num:this.myNum
+            }
+        },
+        watch:{
+            myNum(newv){
+                this.num = newv
+            }
+        },
+        methods: {
+            Add(){
+                // this.num++
+                this.$emit('add-parent')
+            },
+            Red(){
+                // this.num--
+                this.$emit('rdu-parent')
+            }
+        }
+    }
+    const app =new Vue({
+        el:'#app',
+        components:{
+            mydiv
+        },
+        data:{
+            num1:10
+        },
+        methods:{
+            fathernum(){
+                this.num1++
+            },
+            parentadd(){
+                this.num1++
+            },
+            parentrdu(){
+                this.num1--
+            }
+        }
+    })
+</script>
+</html>

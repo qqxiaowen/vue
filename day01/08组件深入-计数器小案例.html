@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <my-zujian></my-zujian>
+            <my-zujian></my-zujian>
+            <my-zujian></my-zujian>
+            <my-zujian></my-zujian>
+            <my-zujian></my-zujian>
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+    // let obj ={num:0}
+    // 在声明的组件中也可以使用data，methods等 但是要加return
+    const  myZujian ={
+        template:`
+        <div>
+            <button @click=handleAdd>+</button>
+            <strong>{{num}}</strong>
+            <button @click=handleReduce>-</button>
+        </div>
+        `,
+        data(){
+            return{
+                num:0
+            }
+            // return obj
+        },
+        methods:{
+            handleAdd(){
+                this.num++
+            },
+            handleReduce(){
+                this.num--
+            }
+        }
+    }
+
+    const app = new Vue({
+        el:'#app',
+        data:{},
+        methods:{},
+        components:{
+            myZujian
+        }
+    })
+</script>
+</html>

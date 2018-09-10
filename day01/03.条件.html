@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+.box{
+    background: red;
+    width: 100px;
+    height: 100px;
+}
+</style>
+<body>
+    <div id="app">
+        <!--v-on: 可以用@来替换  -->
+        <button v-on:click="handleClick">是否显示</button>
+        <!-- v-if是将元素从dom树中删除 v-show是设置元素的style -->
+        <div v-if="isShow" class="box"></div>
+        <div v-show="isShow" class="box"></div>
+
+        <!-- 使用v-bind绑定标签中的属性-checked -->
+        <!-- v-bind:可以简写成:-->
+        <input type="checkbox" v-bind:checked="isShow">
+        <input type="checkbox" :checked="isShow">
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+   const app = new Vue({
+       el:"#app",
+       data:{
+           isShow:true
+       },
+       methods:{
+        handleClick(){
+            // alert("你好");
+            this.isShow = !this.isShow
+        }
+       }
+   })
+</script>
+</html>
