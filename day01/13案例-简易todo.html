@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="addtodo" @keyup.enter="add" placeholder="输入todo">
+        <button @click=add >添加</button>
+        <h2>正在进行</h2>
+        <ul>
+            <li v-for="(item) in arr" v-if="!item.done">
+                <input type="checkbox" v-model="item.done">
+                <strong>{{item.todo}}</strong>
+            </li>
+        </ul>
+        <h2>已经完成</h2>
+
+        <ul>
+            <li v-for="(item) in arr" v-if="item.done">
+                <input type="checkbox" v-model="item.done">
+                <s>{{item.todo}}</s>
+            </li>
+        </ul>
+    </div>    
+</body>
+<script src="./vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            arr:[
+                {
+                    todo:"吃饭",
+                    done:true
+                },
+                {
+                    todo:"睡觉",
+                    done:false
+                },
+                {
+                    todo:"打豆豆",
+                    done:false
+                }
+            ],
+            addtodo:''
+        },
+        methods: {
+            add(){
+                this.arr.push({
+                    todo:this.addtodo,
+                    done:false
+                }),
+                this.addtodo=""
+            }
+        }
+    })
+</script>
+</html>

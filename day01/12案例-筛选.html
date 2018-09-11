@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    td , th{
+        border: 1px solid #000;
+    }
+</style>
+<body>
+        <div id="app">
+            筛选姓名：<input type="text" name="" id="" v-model="msg1">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>姓名</th>
+                    <th>入学时间</th>
+                    <th width=50p>操作</th>
+                </tr>
+                <tr v-for="(item, index) in msg2">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.date}}</td>
+                    <td><a href="javascript:;" @click="del(index)">删除</a></td>
+                </tr>
+            </table>
+        </div>
+</body>
+<script src="./vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            msg1:'',
+            arr: [
+                {
+                    name: 'aaa',
+                    id: 0,
+                    date: new Date()
+                },
+                {
+                    name: 'bbb',
+                    id: 1,
+                    date: new Date()
+                },
+                {
+                    name: 'abc',
+                    id: 2,
+                    date: new Date()
+                }
+            ]
+            
+        },
+        methods: {
+           
+        },
+        computed:{
+            msg2(){
+                if(!this.msg1){
+                    return this.arr
+                }else{
+                    return this.arr.filter(item=>{
+                        return (item.name.indexOf(this.msg1) !=-1)
+                    })
+                }
+            }
+        }
+        
+    })
+</script> 
+</html>
